@@ -4,8 +4,9 @@ A chat app using Golang, Redis and WebSocket.
 
 ## Dependencies
 
-- Golang (https://go.dev)
+- Golang 1.17+ (https://go.dev)
 - Gin (https://gin-gonic.com)
+- golangci-lint (https://golangci-lint.run)
 
 ## Quickstart
 

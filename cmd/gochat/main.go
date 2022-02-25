@@ -22,5 +22,8 @@ func main() {
 	r.GET("/api/v1/ping", handler.Ping)
 
 	port := os.Getenv("PORT")
-	r.Run(":" + port)
+	err := r.Run(":" + port)
+	if err != nil {
+		log.Fatal("error running server")
+	}
 }

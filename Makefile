@@ -8,9 +8,13 @@ help:		## Show the help.
 	@fgrep "##" Makefile | fgrep -v fgrep
 
 .PHONY: install
-install:	## Run the project
+install:	## Install the dependencies
 	go mod download
 
 .PHONY: run
 run:		## Run the application
 	go run cmd/gochat/main.go
+
+.PHONY: lint
+lint: 		## Lint the code with golangci-lint
+	golangci-lint run
