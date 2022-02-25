@@ -10,7 +10,11 @@ import (
 )
 
 func init() {
-	err := godotenv.Load()
+	env := os.Getenv("APP_ENV")
+	if env == "" {
+		env = "development"
+	}
+	err := godotenv.Load("configs/.env." + env)
 	if err != nil {
 		log.Fatal("error loading .env file")
 	}
@@ -22,8 +26,7 @@ func main() {
 	r.GET("/api/v1/ping", handler.Ping)
 
 	port := os.Getenv("PORT")
-	err := r.Run(":" + port)
-	if err != nil {
+	if err := r.Run(":" + port); err != nil {
 		log.Fatal("error running server")
 	}
 }
