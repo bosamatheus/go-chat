@@ -1,10 +1,13 @@
 package main
 
 import (
+	"context"
 	"log"
 	"os"
 
 	"github.com/bosamatheus/gochat/internal/api/handler"
+	"github.com/bosamatheus/gochat/internal/infrastructure/repository"
+	"github.com/bosamatheus/gochat/internal/usecase/chat"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -21,11 +24,17 @@ func init() {
 }
 
 func main() {
+	ctx := context.Background()
+
+	repo := repository.NewChatRedis(&ctx)
+	service := chat.NewService(repo)
+	handler := handler.NewHandler(service)
+
 	r := gin.Default()
+	v1 := r.Group(os.Getenv("API_V1"))
+	v1.GET("/ping", handler.Ping)
 
-	r.GET("/api/v1/ping", handler.Ping)
-
-	port := os.Getenv("PORT")
+	port := os.Getenv("SERVER_PORT")
 	if err := r.Run(":" + port); err != nil {
 		log.Fatal("error running server")
 	}
