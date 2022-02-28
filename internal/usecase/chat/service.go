@@ -10,6 +10,14 @@ func NewService(r Repository) *Service {
 	}
 }
 
-func (s *Service) Ping() (string, error) {
-	return s.repo.Pong()
+func (s *Service) ChatExists(key string) bool {
+	return !s.repo.KeyNotExists(key)
+}
+
+func (s *Service) GetChatHistory(key string) ([]string, error) {
+	return s.repo.GetPreviousValues(key)
+}
+
+func (s *Service) SaveMessage(key string, val []byte) error {
+	return s.repo.SaveValue(key, val)
 }

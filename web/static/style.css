@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --dark-color: black;
+    --highlight-color: #03E9F4;
+    --light-color: #FFF;
+}
+
+body {
+    background-color: var(--dark-color);
+    font-family: "Fira Code", monospace;
+}
+
+.container {
+    left: 50%;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+}
+  
+.container h2 {
+    color: var(--highlight-color);
+    font-family: "Press Start 2P", cursive;
+    margin: 0 0 30px;
+    padding: 0;
+    text-align: center;
+}
+
+.img-gopher {
+    height: 10%;
+    width: 10%;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+    padding: 10px;
+}
+  
+.form-group {
+    text-align: center;
+    position: relative;
+}
+  
+.form-group input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--light-color);
+    color: var(--light-color);
+    font-size: 16px;
+    margin-bottom: 30px;
+    outline: none;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.form-group label {
+    color: var(--light-color);
+    font-size: 16px;
+    left: 0;
+    padding: 10px 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    transition: 0.5s;
+}
+  
+.form-group input:focus ~ label,
+.form-group input:valid ~ label {
+    color: var(--highlight-color);
+    font-size: 12px;
+    left: 0;
+    top: -20px;
+}
+
+form button {
+    background-color: black;
+    color: var(--highlight-color);
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-top: 40px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+form button:hover {
+    background: var(--highlight-color);
+    border-radius: 5px;
+    box-shadow: 0 0 5px var(--highlight-color),
+                0 0 25px var(--highlight-color),
+                0 0 50px var(--highlight-color),
+                0 0 100px var(--highlight-color);
+    color: var(--light-color);
+}
+
+.chat-thread {
+    font-size: 12px;
+    height: 50vh;
+	margin: 40px auto 0 auto;
+	padding: 0 20px 0 0;
+	list-style: none;
+	overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.chat-thread li {
+	position: relative;
+	clear: both;
+	display: inline-block;
+	padding: 16px 40px 16px 20px;
+	margin: 0 0 20px 0;
+	border-radius: 10px;
+	background-color: var(--light-color);
+}
+
+.chat-thread li:nth-child(odd) {
+    background-color: var(--highlight-color);
+    color: var(--dark-color);
+	float: right;
+	margin-right: 100px;
+}
+
+.chat-thread li:nth-child(even) {
+    color: var(--dark-color);
+	float: left;
+	margin-left: 100px;
+}

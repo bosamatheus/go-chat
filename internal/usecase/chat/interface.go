@@ -1,9 +1,13 @@
 package chat
 
 type Repository interface {
-	Pong() (string, error)
+	KeyNotExists(string) bool
+	GetPreviousValues(string) ([]string, error)
+	SaveValue(string, []byte) error
 }
 
 type UseCase interface {
-	Ping() (string, error)
+	ChatExists(string) bool
+	GetChatHistory(string) ([]string, error)
+	SaveMessage(string, []byte) error
 }
