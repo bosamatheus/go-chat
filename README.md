@@ -2,9 +2,20 @@
 
 GoChat! is a simple webapp that connects to a Redis server, and then uses WebSockets to send and receive messages.
 
+![Screenshot](docs/screenshot.png)
+
 ## Features
 
-- Chat history
+- Simple, easy to use, and fast
+- Single room chat with multiple users
+- Messages are sent and received via WebSockets
+- Chat history is stored in Redis
+
+## Architecture
+
+The overall architecture is as follows:
+
+![Architecture](docs/architecture.png)
 
 ## Quickstart
 
