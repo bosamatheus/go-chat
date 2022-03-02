@@ -12,6 +12,6 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o gochat cmd/gochat/main.go
+RUN go build -o bin/gochat cmd/gochat/main.go
 
-CMD ["./gochat"]
+CMD ["./bin/gochat"]
